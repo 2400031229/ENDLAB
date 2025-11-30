@@ -1,47 +1,62 @@
-import { useState } from "react";
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>
+  <style>
+    .container {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    input, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 6px;
+    }
+  </style>
+</head>
 
-export default function StudentForm() {
-  const [step, setStep] = useState(1);
-  const [form, setForm] = useState({ name: "", email: "" });
+<body>
+  <div class="container">
+    <h3>Student Registration</h3>
 
-  return (
-    <div style={{ width: 300, margin: "50px auto", padding: 20, border: "1px solid #ccc" }}>
-      <h3>Student Registration</h3>
-
-      {step === 1 && (
-        <>
-          <input
-            type="text"
-            placeholder="Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            style={{ width: "100%", marginTop: 10 }}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            style={{ width: "100%", marginTop: 10 }}
-          />
-          <button
-            onClick={() => (form.name && form.email ? setStep(2) : alert("Fill all fields"))}
-            style={{ width: "100%", marginTop: 10 }}
-          >
-            Next
-          </button>
-        </>
-      )}
-
-      {step === 2 && (
-        <>
-          <p><b>Name:</b> {form.name}</p>
-          <p><b>Email:</b> {form.email}</p>
-          <button onClick={() => setStep(1)} style={{ width: "100%", marginTop: 10 }}>
-            Back
-          </button>
-        </>
-      )}
+    <!-- Step 1 -->
+    <div id="step1">
+      <input type="text" id="name" placeholder="Name">
+      <input type="email" id="email" placeholder="Email">
+      <button onclick="nextStep()">Next</button>
     </div>
-  );
-}
+
+    <!-- Step 2 -->
+    <div id="step2" style="display: none;">
+      <p><b>Name:</b> <span id="displayName"></span></p>
+      <p><b>Email:</b> <span id="displayEmail"></span></p>
+      <button onclick="backStep()">Back</button>
+    </div>
+  </div>
+
+  <script>
+    function nextStep() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      if (!name || !email) {
+        alert("Fill all fields");
+        return;
+      }
+
+      document.getElementById("displayName").textContent = name;
+      document.getElementById("displayEmail").textContent = email;
+
+      document.getElementById("step1").style.display = "none";
+      document.getElementById("step2").style.display = "block";
+    }
+
+    function backStep() {
+      document.getElementById("step1").style.display = "block";
+      document.getElementById("step2").style.display = "none";
+    }
+  </script>
+</body>
+</html>

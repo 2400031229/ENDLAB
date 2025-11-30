@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Discovering India</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2 data-key="site-title">Discovering India</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-key="nav-home">Home</a></li>
+                <li><a href="monuments.html" data-key="nav-monuments">Monuments</a></li>
+                <li><a href="culture.html" data-key="nav-culture">Culture</a></li>
+                <li><a href="timeline.html" data-key="nav-timeline">Timeline</a></li>
+                <li><a href="signin.html" data-key="nav-signin" class="active">Sign In</a></li>
+                <li><a href="signup.html" data-key="nav-signup">Sign Up</a></li>
+            </ul>
+            <div class="language-selector">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="ta">தமிழ்</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                    <option value="ml">മലയാളം</option>
+                    <option value="mr">मराठी</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="gu">ગુજરાતી</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <main class="login-main">
+        <div class="login-container">
+            <div class="login-form">
+                <h2 data-key="signin-title">Sign In</h2>
+                <form id="signinForm">
+                    <div class="form-group">
+                        <label for="email" data-key="email-label">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" data-key="password-label">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-btn" data-key="signin-btn">Sign In</button>
+                    <div class="auth-links">
+                        <a href="#" class="forgot-password" data-key="forgot-password">Forgot Password?</a>
+                        <p data-key="no-account">Don't have an account? <a href="signup.html" data-key="signup-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                alert('Sign in successful! Welcome back.');
+                window.location.href = 'index.html';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
